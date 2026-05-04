@@ -1,0 +1,389 @@
+{
+  "meta": {
+    "name": "Prestigious Law Firm",
+    "description": "A refined, authoritative design direction for a top-tier law firm — blending institutional gravitas with modern digital sophistication. Inspired by Paul Weiss and Davis Polk.",
+    "source_references": [
+      "https://www.paulweiss.com",
+      "https://www.davispolk.com"
+    ],
+    "created_at": "2026-04-14"
+  },
+
+  "design_system": {
+    "color": {
+      "palette_type": "monochromatic",
+      "primary": {
+        "hex": "#1B2A4A",
+        "role": "Brand anchor — deep navy used for headers, primary navigation, hero backgrounds, and institutional identity"
+      },
+      "secondary": {
+        "hex": "#6B7B99",
+        "role": "Supporting slate blue — used for secondary text, metadata, captions, and de-emphasized UI elements"
+      },
+      "accent": {
+        "hex": "#3B6FA0",
+        "role": "Corporate blue — used for overlines, card accents, interactive highlights, and CTAs. Cool-toned, consistent with Paul Weiss palette."
+      },
+      "neutral": {
+        "scale": ["#FFFFFF", "#FAFBFC", "#F0F2F5", "#E4E7EC", "#C8CDD6", "#8D95A3", "#4A5568", "#2D3748", "#1A202C"],
+        "usage": "Nine-step scale from pure white to near-black. Backgrounds alternate between first three values. Text uses bottom three."
+      },
+      "semantic": {
+        "success": "#2E7D32",
+        "warning": "#E65100",
+        "error": "#C62828",
+        "info": "#1565C0"
+      },
+      "surface": {
+        "background": "#FFFFFF",
+        "card": "#FAFBFC",
+        "elevated": "#FFFFFF"
+      },
+      "contrast_strategy": "High contrast dark-on-light dominant. Navy text on white/cream backgrounds. Reversed in hero sections with white text on navy."
+    },
+
+    "typography": {
+      "type_scale": {
+        "display": {
+          "size": "clamp(2.75rem, 5vw, 4rem)",
+          "weight": "300",
+          "line_height": "1.1",
+          "tracking": "-0.02em"
+        },
+        "heading_1": {
+          "size": "clamp(2rem, 3.5vw, 2.75rem)",
+          "weight": "400",
+          "line_height": "1.2",
+          "tracking": "-0.015em"
+        },
+        "heading_2": {
+          "size": "clamp(1.5rem, 2.5vw, 2rem)",
+          "weight": "400",
+          "line_height": "1.25",
+          "tracking": "-0.01em"
+        },
+        "heading_3": {
+          "size": "clamp(1.125rem, 1.5vw, 1.375rem)",
+          "weight": "500",
+          "line_height": "1.35",
+          "tracking": "0"
+        },
+        "body": {
+          "size": "1.0625rem",
+          "weight": "400",
+          "line_height": "1.65",
+          "tracking": "0.005em"
+        },
+        "body_small": {
+          "size": "0.9375rem",
+          "weight": "400",
+          "line_height": "1.6",
+          "tracking": "0.005em"
+        },
+        "caption": {
+          "size": "0.8125rem",
+          "weight": "400",
+          "line_height": "1.5",
+          "tracking": "0.01em"
+        },
+        "overline": {
+          "size": "0.75rem",
+          "weight": "600",
+          "line_height": "1.4",
+          "tracking": "0.12em"
+        }
+      },
+      "font_families": {
+        "heading": "'Playfair Display', Georgia, 'Times New Roman', serif",
+        "body": "'Inter', -apple-system, system-ui, sans-serif",
+        "mono": "'JetBrains Mono', 'Fira Code', monospace"
+      },
+      "font_style_notes": "Serif headings convey institutional authority and tradition. Sans-serif body ensures readability and modernity. Display weight is light (300) to feel elegant, not heavy. Overline text uses wide tracking and uppercase for labeling practice areas and categories."
+    },
+
+    "spacing": {
+      "base_unit": "8px",
+      "scale": ["4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px", "96px", "128px"],
+      "content_density": "spacious",
+      "section_rhythm": "Alternating generous vertical spacing — 96px between major sections on desktop (clamp-scaled down to 48px on mobile). Inner content uses 32–48px vertical gaps. Breathing room is a design feature, not wasted space."
+    },
+
+    "layout": {
+      "grid_system": "12-column CSS grid with centered container",
+      "max_content_width": "1280px",
+      "columns": "12",
+      "gutter": "32px",
+      "breakpoints": {
+        "mobile": "0–767px",
+        "tablet": "768–1023px",
+        "desktop": "1024–1439px",
+        "wide": "1440px+"
+      },
+      "alignment_tendency": "centered"
+    },
+
+    "shape": {
+      "border_radius": {
+        "small": "2px",
+        "medium": "4px",
+        "large": "6px",
+        "pill": "999px"
+      },
+      "border_usage": "subtle 1px — used on cards, inputs, and table cells. Color is neutral-300 (#E4E7EC). Never decorative.",
+      "divider_style": "Thin 1px horizontal rules in neutral-200. Used between content sections and list items. No ornamental dividers."
+    },
+
+    "elevation": {
+      "shadow_style": "soft diffused",
+      "levels": {
+        "low": "0 1px 3px rgba(27,42,74,0.06), 0 1px 2px rgba(27,42,74,0.04)",
+        "medium": "0 4px 12px rgba(27,42,74,0.08), 0 2px 4px rgba(27,42,74,0.04)",
+        "high": "0 12px 32px rgba(27,42,74,0.12), 0 4px 8px rgba(27,42,74,0.06)"
+      },
+      "depth_cues": "Shadows use the primary navy tint rather than pure black — creates warmer, more refined depth. Elevation is used sparingly: dropdowns, modals, and sticky nav only."
+    },
+
+    "iconography": {
+      "style": "outline",
+      "stroke_weight": "1.5px",
+      "size_scale": ["16px", "20px", "24px"],
+      "preferred_set": "Lucide or Phosphor — clean, professional line icons. No filled icons. No emoji."
+    },
+
+    "motion": {
+      "easing": "cubic-bezier(0.25, 0.1, 0.25, 1.0)",
+      "duration_scale": {
+        "micro": "150ms",
+        "normal": "300ms",
+        "macro": "600ms"
+      },
+      "entrance_pattern": "fade-up — opacity 0→1 with 12px upward translate",
+      "exit_pattern": "fade — opacity 1→0, no positional shift",
+      "philosophy": "minimal functional — motion exists to orient and confirm, never to entertain. Restraint is the hallmark of prestige."
+    },
+
+    "components": {
+      "button_style": "Primary: navy background, white text, no border-radius, subtle letter-spacing. Hover: lighten 10%. Ghost: transparent with 1px navy border. All buttons are rectangular — no rounded pills.",
+      "input_style": "Rectangular with 1px neutral border. Focused state adds navy border. No inner shadows. Label above, not floating.",
+      "card_style": "White background with 1px border on neutral-200. No shadow at rest, low shadow on hover. Content padded 24–32px. Optional gold accent top-border for featured items.",
+      "navigation_pattern": "Horizontal persistent nav with logo left, links right. Sticky on scroll with subtle shadow. Dropdown menus appear on hover with 200ms delay. Mobile: full-screen overlay menu.",
+      "modal_style": "Centered with backdrop blur, high elevation shadow. Max-width 640px. Close button top-right.",
+      "list_style": "Clean typographic lists with generous line spacing. Horizontal rules between items. Metadata (date, practice area) in caption text.",
+      "component_notes": "Components are deliberately understated. The design communicates prestige through restraint, not visual complexity. Every element earns its place."
+    }
+  },
+
+  "design_style": {
+    "aesthetic": {
+      "mood": ["authoritative", "refined", "composed", "trustworthy", "modern-traditional"],
+      "visual_metaphor": "A senior partner's corner office — mahogany undertones translated to digital. Everything curated, nothing casual.",
+      "era_influence": "Contemporary minimalism anchored by neoclassical sensibility. Think 2020s digital craft meets 1920s institutional architecture.",
+      "genre": "luxury institutional",
+      "personality_traits": ["commanding", "measured", "intellectually rigorous", "discreetly elegant", "unflappable"],
+      "adjectives": ["polished", "stately", "crisp", "assured", "deliberate"]
+    },
+
+    "visual_language": {
+      "complexity": "minimal",
+      "ornamentation": "none",
+      "whitespace_usage": "Generous and intentional — whitespace is the primary luxury signal. Content never feels crowded. Sections breathe.",
+      "visual_weight_distribution": "Top-heavy — hero and firm identity commands attention, then progressively lighter as user scrolls into content.",
+      "focal_strategy": "single hero element — one powerful statement or image per viewport, supported by sparse secondary content",
+      "contrast_level": "High contrast between primary content and background. Low contrast between secondary elements for visual hierarchy.",
+      "texture_usage": "None — surfaces are flat and clean. The only textural quality comes from serif typography and professional photography."
+    },
+
+    "composition": {
+      "hierarchy_method": "typographic hierarchy — scale, weight, and color create all structural differentiation. No boxes or badges needed.",
+      "balance_type": "symmetric",
+      "flow_direction": "Top-to-bottom editorial scroll. Left-to-right reading within sections. No lateral or unconventional flow.",
+      "grouping_strategy": "Whitespace and thin dividers group related content. No colored section backgrounds until late in the page.",
+      "negative_space_role": "Load-bearing — negative space does as much work as content. It signals confidence and selectivity."
+    },
+
+    "imagery": {
+      "photo_treatment": "Professional color photography with natural lighting. Attorney portraits are formal but approachable — not stiff. Cityscapes show global presence. All images use subtle desaturation (-10–15%) for cohesion.",
+      "illustration_style": "Not used — illustration would undermine the institutional tone.",
+      "graphic_elements": "Minimal. Thin horizontal rules, occasional gold accent lines. No decorative graphics, patterns, or abstract shapes.",
+      "pattern_usage": "None — patterns would add visual noise contrary to the restraint principle.",
+      "image_shape": "Rectangular with no border-radius. Full-bleed hero images. Inline images maintain 16:9 or 3:2 aspect ratios."
+    },
+
+    "interaction_feel": {
+      "feedback_style": "Understated — color shifts and subtle opacity changes confirm interactions. No bouncing, scaling, or playful feedback.",
+      "hover_behavior": "Text links gain underline on hover. Cards lift with low shadow. Buttons darken 10%. Navigation links shift to gold accent.",
+      "transition_personality": "smooth glide — 300ms ease-out for all state transitions. Nothing snappy, nothing bouncy.",
+      "loading_style": "Skeleton screens matching content layout. No spinners — spinners feel impatient. Graceful placeholder-to-content reveal.",
+      "microinteraction_density": "Low — interactions are confident and singular. No cascading animations on every scroll event."
+    },
+
+    "brand_voice_in_ui": {
+      "tone": "Authoritative and measured. Copy is precise, never casual. No exclamation marks. No emoji.",
+      "formality": "High — the UI speaks like a managing partner addressing a client. Professional but not cold.",
+      "cta_style": "subtle suggestion — 'Learn More', 'View Profile', 'Explore Our Practice'. Never 'Click Here!' or 'Get Started Now!'",
+      "empty_state_approach": "Brief, helpful direction: 'No results found. Adjust your search criteria.' No illustrations or humor.",
+      "error_tone": "Formal and solution-oriented: 'We were unable to process your request. Please try again or contact us directly.'"
+    }
+  },
+
+  "visual_effects": {
+    "overview": {
+      "effect_intensity": "subtle-accent",
+      "performance_tier": "lightweight",
+      "fallback_strategy": "disable effects — site must function perfectly without any JS-driven effects",
+      "primary_technology": "CSS only"
+    },
+
+    "background_effects": {
+      "type": "none",
+      "description": "No animated or generative backgrounds. Prestige is communicated through content and typography, not visual spectacle.",
+      "technology": "CSS only",
+      "params": {
+        "color_palette": "N/A",
+        "speed": "N/A",
+        "density": "N/A",
+        "opacity": "N/A",
+        "blend_mode": "N/A"
+      }
+    },
+
+    "particle_systems": {
+      "enabled": false,
+      "type": "none",
+      "description": "No particle effects — would undermine institutional credibility.",
+      "technology": "N/A",
+      "params": {
+        "count": "N/A",
+        "shape": "N/A",
+        "size_range": "N/A",
+        "movement_pattern": "N/A",
+        "color_behavior": "N/A",
+        "interaction": "none",
+        "spawn_area": "N/A"
+      }
+    },
+
+    "3d_elements": {
+      "enabled": false,
+      "type": "none",
+      "description": "No 3D elements. The design relies on 2D composition and typography.",
+      "technology": "N/A",
+      "params": {
+        "renderer": "N/A",
+        "lighting": "N/A",
+        "camera": "N/A",
+        "materials": "N/A",
+        "geometry": "N/A",
+        "post_processing": [],
+        "interaction_model": "N/A"
+      }
+    },
+
+    "shader_effects": [
+      {
+        "enabled": false,
+        "type": "none",
+        "description": "No shader effects. Visual identity is achieved through restraint.",
+        "technology": "N/A",
+        "order": 0,
+        "params": {}
+      }
+    ],
+
+    "scroll_effects": {
+      "parallax": {
+        "enabled": false,
+        "layers": "0",
+        "depth_range": "N/A",
+        "speed_curve": "N/A"
+      },
+      "scroll_triggered_animations": {
+        "enabled": true,
+        "trigger_points": "Elements animate when 20% visible in viewport",
+        "animation_type": "fade-up",
+        "scrub_behavior": "None — animations trigger once and complete. No scroll-scrubbing."
+      },
+      "scroll_morphing": {
+        "enabled": false,
+        "description": "No scroll morphing effects."
+      }
+    },
+
+    "text_effects": {
+      "type": "none",
+      "description": "No text splitting, typewriter, or animated text effects. Headlines appear via standard fade-up with the rest of their section.",
+      "technology": "CSS transitions",
+      "params": {
+        "split_strategy": "N/A",
+        "animation_per_unit": "N/A",
+        "stagger": "N/A",
+        "effect_style": "N/A"
+      }
+    },
+
+    "cursor_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "Standard system cursor throughout. Custom cursors feel gimmicky in this context.",
+      "params": {
+        "shape": "N/A",
+        "size": "N/A",
+        "blend_mode": "N/A",
+        "trail": "N/A",
+        "interaction_zone": "N/A"
+      }
+    },
+
+    "image_effects": {
+      "type": "none",
+      "description": "No hover distortion or WebGL image effects. Images are presented cleanly. Hover on attorney cards may add subtle shadow lift.",
+      "technology": "CSS transitions",
+      "params": {
+        "filter_pipeline": "Slight desaturation (filter: saturate(0.85)) for visual cohesion across diverse photo sources",
+        "hover_transform": "translateY(-2px) with shadow elevation increase",
+        "reveal_animation": "fade-up with parent section",
+        "distortion_type": "none"
+      }
+    },
+
+    "glassmorphism_neumorphism": {
+      "enabled": false,
+      "style": "none",
+      "params": {
+        "blur_radius": "N/A",
+        "transparency": "N/A",
+        "border_treatment": "N/A",
+        "shadow_type": "N/A",
+        "light_source_angle": "N/A"
+      }
+    },
+
+    "canvas_drawings": {
+      "enabled": false,
+      "type": "none",
+      "description": "No canvas-based rendering.",
+      "technology": "N/A",
+      "params": {
+        "draw_method": "N/A",
+        "animation_loop": "N/A",
+        "color_scheme": "N/A",
+        "responsiveness": "N/A",
+        "interaction": "N/A"
+      }
+    },
+
+    "svg_animations": {
+      "enabled": false,
+      "type": "none",
+      "description": "No SVG path animations or morphing. SVGs used only for static icons and logos.",
+      "params": {
+        "animation_method": "N/A",
+        "path_morphing": "N/A",
+        "stroke_animation": "N/A",
+        "filter_effects": "N/A"
+      }
+    },
+
+    "composite_notes": "This design deliberately avoids visual effects as a strategic choice. In the white-shoe law firm genre, restraint IS the effect. The absence of animation, particles, shaders, and 3D communicates that the firm's reputation speaks for itself. The only motion is functional: gentle fade-up on scroll entry and smooth hover state transitions. Performance is excellent by default because there is nothing to render."
+  }
+}
