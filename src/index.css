@@ -1556,7 +1556,7 @@ a.attorney-card:hover h3 {
   border: 1px solid var(--color-border);
   border-radius: 0;
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--color-text);
   background: var(--color-bg);
   outline: none;
@@ -2538,16 +2538,26 @@ a.attorney-card:hover h3 {
   .nav-links.open a {
     font-size: 1rem;
     color: var(--color-white);
+    padding: var(--space-sm) var(--space-md);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
   .nav-toggle { display: block; }
   .nav-close {
     position: absolute;
-    top: var(--space-lg);
-    right: var(--space-xl);
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
     color: var(--color-white);
-    font-size: 1.5rem;
+    font-size: 2rem;
+    line-height: 1;
     cursor: pointer;
   }
   .practice-grid { grid-template-columns: 1fr; }
@@ -2557,6 +2567,9 @@ a.attorney-card:hover h3 {
   .attorney-bio-content { text-align: left; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: var(--space-sm); }
+  .footer-links { gap: 0; }
+  .footer-links li { padding: var(--space-xs) 0; }
+  .footer-links a { display: inline-block; padding: 6px 0; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2rem; }
   .eval-columns { grid-template-columns: 1fr; }
@@ -2630,6 +2643,24 @@ a.attorney-card:hover h3 {
   .article-detail-hero h1 { font-size: 1.75rem; }
   .article-detail-body { padding: var(--space-2xl) var(--space-md) var(--space-3xl); }
   .case-detail-hero h1 { font-size: 1.6rem; }
+
+  .results-table-wrap { padding: var(--space-xl) var(--space-md) var(--space-2xl); overflow-x: visible; }
+  .results-table,
+  .results-table thead,
+  .results-table tbody,
+  .results-table tr,
+  .results-table th,
+  .results-table td { display: block; width: 100%; }
+  .results-table thead { position: absolute; left: -9999px; }
+  .results-table tr {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .results-table tr:first-child { border-top: 2px solid var(--color-primary); }
+  .results-table td { padding: 0; border: none; }
+  .results-table td:first-child { max-width: none; margin-bottom: var(--space-xs); }
+  .results-table td:nth-child(2) { margin-bottom: var(--space-xs); }
+  .results-table td:last-child { color: var(--color-muted); font-style: italic; }
   .case-detail-body {
     grid-template-columns: 1fr;
     padding: var(--space-2xl) var(--space-md) var(--space-3xl);

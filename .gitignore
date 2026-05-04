@@ -26,3 +26,10 @@ dist-ssr
 # Environment
 .env
 .env.local
+
+# Audit / test artifacts
+.playwright-mcp/
+mobile-*.png
+mobile-*.jpeg
+.vercel
+.env*.local
