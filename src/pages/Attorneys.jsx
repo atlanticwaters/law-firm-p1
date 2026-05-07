@@ -76,7 +76,7 @@ export default function Attorneys() {
             key={a.initials}
           >
             <div className="attorney-portrait-wrap">
-              <AttorneyPortrait initials={a.initials} />
+              <AttorneyPortrait slug={a.slug} name={a.name} />
             </div>
             <h3>{a.name}</h3>
             <div className="attorney-title">{a.role}</div>

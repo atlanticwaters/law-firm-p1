@@ -437,7 +437,7 @@ export default function AttorneyDetail() {
         {/* Sidebar */}
         <aside className="attorney-detail-sidebar">
           <div className="attorney-detail-portrait">
-            <AttorneyPortrait initials={attorney.initials} size={180} />
+            <AttorneyPortrait slug={slug} name={attorney.name} size={180} />
           </div>
 
           <div className="attorney-sidebar-block">
