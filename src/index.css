@@ -1609,9 +1609,12 @@ a.attorney-card:hover h3 {
   background: var(--color-primary-light);
 }
 
-.form-submit:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.form-submit:disabled { opacity: 0.6; cursor: default; }
+
+.form-error {
+  margin-top: var(--space-sm);
+  color: #8a1c1c; /* cool-compatible deep red for validation errors */
+  font-size: 0.9375rem;
 }
 
 .form-success {
@@ -2125,6 +2128,15 @@ a.attorney-card:hover h3 {
   color: var(--color-white);
   border-color: var(--color-white);
   text-decoration: none;
+}
+
+.careers-form {
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.careers-form-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 /* ============================================
