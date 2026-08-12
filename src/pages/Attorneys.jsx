@@ -2,51 +2,7 @@ import { Link } from "react-router-dom";
 import AttorneyPortrait from "../components/AttorneyPortrait";
 import { useFadeIn } from "../hooks/useFadeIn";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-
-const allAttorneys = [
-  {
-    slug: "reginald-glover",
-    initials: "RG",
-    name: "Reginald H. Glover, Esq.",
-    role: "Founding Partner",
-    specialty: "Hand Puppet Defense, Glove Entity Civil Rights, Class Action Defense",
-  },
-  {
-    slug: "victoria-mast",
-    initials: "VM",
-    name: "Victoria C. Mast, J.D.",
-    role: "Partner",
-    specialty: "Marionette Rights, String Entity Litigation, Attributed Speech Liability",
-  },
-  {
-    slug: "winston-purl",
-    initials: "WP",
-    name: "Winston A. Purl, LLM",
-    role: "Partner",
-    specialty: "Felt Entity Rights, International Puppet Law, Intellectual Property, Personhood",
-  },
-  {
-    slug: "serena-nap",
-    initials: "SN",
-    name: "Serena Nap, Esq.",
-    role: "Associate",
-    specialty: "Employment Discrimination, Wrongful Termination",
-  },
-  {
-    slug: "theodore-scrim",
-    initials: "TS",
-    name: "Theodore Scrim, J.D.",
-    role: "Associate",
-    specialty: "Intellectual Property, Licensing, Likeness Rights",
-  },
-  {
-    slug: "harriet-weft",
-    initials: "HW",
-    name: "Harriet Weft, Esq.",
-    role: "Associate",
-    specialty: "Entity Personhood, Civil Rights, Amicus Practice",
-  },
-];
+import allAttorneys from "../data/attorneys";
 
 export default function Attorneys() {
   useDocumentTitle("Our Attorneys");
