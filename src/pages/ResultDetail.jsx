@@ -1,9 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import resultsData, { slugs as resultSlugs } from "../data/results";
+import attorneysData from "../data/attorneys";
 
 const cases = Object.fromEntries(resultsData.map((r) => [r.slug, r]));
 const slugs = resultSlugs;
+const attorneyByName = Object.fromEntries(attorneysData.map((a) => [a.name, a.slug]));
 
 export { cases, slugs };
 
@@ -77,11 +79,20 @@ export default function ResultDetail() {
           </div>
           <div className="case-sidebar-block">
             <div className="case-sidebar-label">Attorneys</div>
-            {matter.attorneys.map((a) => (
-              <div className="case-sidebar-value" key={a}>
-                {a}
-              </div>
-            ))}
+            {matter.attorneys.map((a) => {
+              const attorneySlug = attorneyByName[a];
+              return (
+                <div className="case-sidebar-value" key={a}>
+                  {attorneySlug ? (
+                    <Link to={`/attorneys/${attorneySlug}`} className="case-sidebar-attorney-link">
+                      {a}
+                    </Link>
+                  ) : (
+                    a
+                  )}
+                </div>
+              );
+            })}
           </div>
           <div className="case-sidebar-block case-sidebar-outcome">
             <div className="case-sidebar-label">Outcome</div>

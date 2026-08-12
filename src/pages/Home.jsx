@@ -150,6 +150,23 @@ export default function Home() {
           <div className="featured-result-meta">
             Settlement: Confidential &middot; Client returned to production
           </div>
+          <div style={{ marginTop: "var(--space-xl)" }}>
+            <Link
+              to="/results"
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                color: "var(--color-accent)",
+                textDecoration: "none",
+                borderBottom: "1px solid var(--color-accent)",
+                paddingBottom: "2px",
+              }}
+            >
+              View All Representative Matters
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -195,6 +212,23 @@ export default function Home() {
               <div className="perspective-author">Reginald H. Glover, Esq.</div>
               <div className="perspective-pub">Internal publication</div>
             </div>
+          </div>
+          <div style={{ marginTop: "var(--space-xl)" }}>
+            <Link
+              to="/perspectives"
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                color: "var(--color-accent)",
+                textDecoration: "none",
+                borderBottom: "1px solid var(--color-accent)",
+                paddingBottom: "2px",
+              }}
+            >
+              View All Perspectives
+            </Link>
           </div>
         </div>
       </section>
