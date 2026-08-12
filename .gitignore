@@ -33,3 +33,4 @@ mobile-*.png
 mobile-*.jpeg
 .vercel
 .env*.local
+.env*
