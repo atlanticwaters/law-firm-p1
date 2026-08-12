@@ -45,6 +45,7 @@ export default function ResultDetail() {
         title={matter.title}
         description={matter.shortDescription || 'A representative matter handled by Glover, Mast & Purl.'}
         canonicalPath={`/results/${slug}`}
+        image={matter.heroImage?.src}
         jsonLd={jsonLd}
       />
       <section className="case-detail-hero">

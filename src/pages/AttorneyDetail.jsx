@@ -66,6 +66,7 @@ export default function AttorneyDetail() {
         title={attorney.name}
         description={`${attorney.name}, ${attorney.role} at Glover, Mast & Purl — representing entities in complex litigation.`}
         canonicalPath={`/attorneys/${slug}`}
+        image={`/images/portraits/${slug}.png`}
         jsonLd={jsonLd}
       />
       <section className="page-hero">

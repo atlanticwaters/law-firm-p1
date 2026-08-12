@@ -57,6 +57,7 @@ export default function PerspectiveDetail() {
         description={article.abstract || article.title}
         canonicalPath={`/perspectives/${slug}`}
         type="article"
+        image={article.heroImage?.src}
         jsonLd={[articleJsonLd, breadcrumbJsonLd]}
       />
       <section className="article-detail-hero">
