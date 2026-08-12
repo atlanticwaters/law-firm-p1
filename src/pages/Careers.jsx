@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import CareersForm from "../components/CareersForm";
 
 const positions = [
   {
@@ -219,6 +220,12 @@ export default function Careers() {
             candidates are evaluated on qualifications, professional competence,
             and commitment to the firm's client population.
           </p>
+        </div>
+      </div>
+
+      <div className="careers-form">
+        <div className="careers-form-inner">
+          <CareersForm />
         </div>
       </div>
     </div>
