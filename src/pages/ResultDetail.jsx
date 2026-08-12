@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import resultsData, { slugs as resultSlugs } from "../data/results";
 
 const cases = Object.fromEntries(resultsData.map((r) => [r.slug, r]));
@@ -11,11 +11,10 @@ export default function ResultDetail() {
   const { slug } = useParams();
   const matter = cases[slug];
 
-  useDocumentTitle(matter ? matter.title : "Matter Not Found");
-
   if (!matter) {
     return (
       <div className="page page-case-detail">
+        <Seo title="Not Found" canonicalPath="/404" />
         <section className="case-detail-hero">
           <h1>Matter Not Found</h1>
         </section>
@@ -31,6 +30,11 @@ export default function ResultDetail() {
 
   return (
     <div className="page page-case-detail">
+      <Seo
+        title={matter.title}
+        description={matter.shortDescription || 'A representative matter handled by Glover, Mast & Purl.'}
+        canonicalPath={`/results/${slug}`}
+      />
       <section className="case-detail-hero">
         {matter.heroImage && (
           <div className="case-detail-hero-bg">

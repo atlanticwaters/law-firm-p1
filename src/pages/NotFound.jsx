@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 
 export default function NotFound() {
-  useDocumentTitle("Page Not Found");
-
   return (
     <div className="page page-not-found">
+      <Seo title="Page Not Found" canonicalPath="/404" />
       <section className="page-hero">
         <div className="page-hero-content">
           <h1>Page Not Found</h1>

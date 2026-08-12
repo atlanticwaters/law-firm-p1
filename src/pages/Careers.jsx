@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import CareersForm from "../components/CareersForm";
 
 const positions = [
@@ -63,12 +63,16 @@ const positions = [
 ];
 
 export default function Careers() {
-  useDocumentTitle("Careers");
   const introRef = useFadeIn();
   const valuesRef = useFadeIn();
 
   return (
     <div className="page page-careers">
+      <Seo
+        title="Careers"
+        description="Join Glover, Mast & Purl — litigation careers in the emerging field of entity representation. Submit an application."
+        canonicalPath="/careers"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

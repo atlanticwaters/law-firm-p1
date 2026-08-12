@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import perspectivesData, { slugs } from "../data/perspectives";
 
 const articles = Object.fromEntries(perspectivesData.map((a) => [a.slug, a]));
@@ -11,11 +11,10 @@ export default function PerspectiveDetail() {
   const { slug } = useParams();
   const article = articles[slug];
 
-  useDocumentTitle(article ? article.title : "Article Not Found");
-
   if (!article) {
     return (
       <div className="page page-article-detail">
+        <Seo title="Not Found" canonicalPath="/404" />
         <section className="article-detail-hero">
           <h1>Article Not Found</h1>
         </section>
@@ -31,6 +30,12 @@ export default function PerspectiveDetail() {
 
   return (
     <div className="page page-article-detail">
+      <Seo
+        title={article.title}
+        description={article.abstract || article.title}
+        canonicalPath={`/perspectives/${slug}`}
+        type="article"
+      />
       <section className="article-detail-hero">
         {article.heroImage && (
           <div className="article-detail-hero-bg">

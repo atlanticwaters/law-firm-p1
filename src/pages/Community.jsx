@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 
 const entityTypes = [
   { type: "Hand and glove entities", pct: 28 },
@@ -29,7 +29,6 @@ const milestones = [
 ];
 
 export default function Community() {
-  useDocumentTitle("Community & Pro Bono");
   const deiRef = useFadeIn();
   const statsRef = useFadeIn();
   const probonoRef = useFadeIn();
@@ -38,6 +37,11 @@ export default function Community() {
 
   return (
     <div className="page page-community">
+      <Seo
+        title="Community"
+        description="The firm's pro bono and advocacy work advancing recognition and standing for entity clients."
+        canonicalPath="/community"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

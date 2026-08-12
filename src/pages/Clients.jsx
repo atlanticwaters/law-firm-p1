@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 
 const traditionalEntities = [
   {
@@ -99,7 +99,6 @@ const emergingEntities = [
 ];
 
 export default function Clients() {
-  useDocumentTitle("Who We Serve");
   const originRef = useFadeIn();
   const needRef = useFadeIn();
   const vulnerRef = useFadeIn();
@@ -109,6 +108,11 @@ export default function Clients() {
 
   return (
     <div className="page page-clients">
+      <Seo
+        title="Our Clients"
+        description="Glover, Mast & Purl represents puppet entities exclusively — the standard of representation for clients who act only through authorized representatives."
+        canonicalPath="/clients"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

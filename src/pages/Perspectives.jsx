@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import articles from "../data/perspectives";
 
 export default function Perspectives() {
-  useDocumentTitle("Perspectives");
   const listRef = useFadeIn();
 
   return (
     <div className="page page-perspectives">
+      <Seo
+        title="Perspectives"
+        description="Writing from the firm on entity rights, the attributed speech doctrine, and the evolving law of representation for non-speaking clients."
+        canonicalPath="/perspectives"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

@@ -1,10 +1,13 @@
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 
 export default function Privacy() {
-  useDocumentTitle("Privacy Policy");
-
   return (
     <div className="page page-privacy">
+      <Seo
+        title="Privacy Policy"
+        description="How Glover, Mast & Purl handles information submitted through this site."
+        canonicalPath="/privacy"
+      />
       <section className="page-hero">
         <div className="page-hero-content">
           <h1>Privacy Policy</h1>

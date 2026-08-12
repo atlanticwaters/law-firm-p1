@@ -1,15 +1,19 @@
 import { Link } from "react-router-dom";
 import AttorneyPortrait from "../components/AttorneyPortrait";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import allAttorneys from "../data/attorneys";
 
 export default function Attorneys() {
-  useDocumentTitle("Our Attorneys");
   const gridRef = useFadeIn();
 
   return (
     <div className="page page-attorneys">
+      <Seo
+        title="Attorneys"
+        description="The litigators of Glover, Mast & Purl — counsel experienced in entity representation, attributed speech, and handler misconduct across New York, London, and Geneva."
+        canonicalPath="/attorneys"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

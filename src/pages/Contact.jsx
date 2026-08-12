@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import { useFormSubmit } from "../hooks/useFormSubmit";
 
 export default function Contact() {
-  useDocumentTitle("Submit an Inquiry");
   const formRef = useFadeIn();
   const [form, setForm] = useState({
     name: "",
@@ -27,6 +26,11 @@ export default function Contact() {
 
   return (
     <div className="page page-contact">
+      <Seo
+        title="Submit an Inquiry"
+        description="Contact Glover, Mast & Purl. All matters begin with a written inquiry; a member of the firm responds within three business days."
+        canonicalPath="/contact"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

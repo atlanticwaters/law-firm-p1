@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import matters from "../data/results";
 
 export default function Results() {
-  useDocumentTitle("Selected Representations");
   const tableRef = useFadeIn();
 
   return (
     <div className="page page-results">
+      <Seo
+        title="Representative Matters"
+        description="Selected outcomes in entity representation — dismissals, precedential rulings, and recoveries obtained for clients who cannot speak for themselves."
+        canonicalPath="/results"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

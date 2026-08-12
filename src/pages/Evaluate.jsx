@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 
 function EvalSection({ number, title, indicators, evidence, outcomes }) {
   const ref = useFadeIn();
@@ -198,12 +198,16 @@ const sections = [
 ];
 
 export default function Evaluate() {
-  useDocumentTitle("Case Evaluation");
   const introRef = useFadeIn();
   const closerRef = useFadeIn();
 
   return (
     <div className="page page-evaluate">
+      <Seo
+        title="Case Evaluation"
+        description="Determine whether your client's situation warrants legal action — indicators, supporting evidence, and possible outcomes across the firm's practice areas."
+        canonicalPath="/evaluate"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

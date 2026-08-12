@@ -1,5 +1,5 @@
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 
 function PracticeSection({ number, title, paragraphs }) {
   const ref = useFadeIn();
@@ -66,10 +66,13 @@ const practices = [
 ];
 
 export default function Practice() {
-  useDocumentTitle("Practice Areas");
-
   return (
     <div className="page page-practice">
+      <Seo
+        title="Practice Areas"
+        description="Puppet defense, handler misconduct, attributed speech claims, wrongful termination, intellectual property, and entity standing — the firm's core litigation practice."
+        canonicalPath="/practice"
+      />
       <section className="page-hero">
         <div className="page-hero-bg">
           <img

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import AttorneyPortrait from "../components/AttorneyPortrait";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 import attorneysData, { slugs } from "../data/attorneys";
 
 const attorneys = Object.fromEntries(attorneysData.map((a) => [a.slug, a]));
@@ -14,11 +14,10 @@ export default function AttorneyDetail() {
   const attorney = attorneys[slug];
   const contentRef = useFadeIn();
 
-  useDocumentTitle(attorney ? attorney.name : "Attorney Not Found");
-
   if (!attorney) {
     return (
       <div className="page">
+        <Seo title="Not Found" canonicalPath="/404" />
         <section className="page-hero">
           <div className="page-hero-content">
             <h1>Attorney Not Found</h1>
@@ -40,6 +39,11 @@ export default function AttorneyDetail() {
 
   return (
     <div className="page page-attorney-detail">
+      <Seo
+        title={attorney.name}
+        description={`${attorney.name}, ${attorney.role} at Glover, Mast & Purl — representing entities in complex litigation.`}
+        canonicalPath={`/attorneys/${slug}`}
+      />
       <section className="page-hero">
         <div className="page-hero-content">
           <h1>{attorney.name}</h1>
