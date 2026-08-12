@@ -28,7 +28,7 @@ export default defineConfig([
   },
   {
     // Server-side / build files run in Node, not the browser.
-    files: ['api/**/*.js', 'vite.config.js', 'eslint.config.js'],
+    files: ['api/**/*.js', 'scripts/**/*.js', 'vite.config.js', 'eslint.config.js'],
     languageOptions: {
       globals: globals.node,
       parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
