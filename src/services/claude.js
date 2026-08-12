@@ -1,95 +1,72 @@
-const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
-const API_URL = "https://api.anthropic.com/v1/messages";
+/**
+ * Client for the firm's chat assistant.
+ *
+ * These functions call our own /api/chat endpoint, which holds the Anthropic
+ * API key server-side and forwards requests to Claude. The key is never
+ * exposed to the browser.
+ */
+const API_URL = "/api/chat";
 
-export async function sendMessage(messages, { model = "claude-sonnet-4-20250514", maxTokens = 1024, system } = {}) {
-  const body = {
-    model,
-    max_tokens: maxTokens,
-    messages: messages.map((m) => ({
-      role: m.role,
-      content: m.content,
-    })),
-  };
+const DEFAULT_MODEL = "claude-sonnet-4-6";
 
-  if (system) {
-    body.system = system;
-  }
-
+export async function sendMessage(messages, { model = DEFAULT_MODEL, maxTokens = 1024, system } = {}) {
   const response = await fetch(API_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true",
-    },
-    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages, system, model, maxTokens }),
   });
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
-    throw new Error(error.error?.message || `API error: ${response.status}`);
+    throw new Error(error.error || `Request failed: ${response.status}`);
   }
 
   const data = await response.json();
-  return data.content[0].text;
+  return data.text;
 }
 
-export async function streamMessage(messages, onChunk, { model = "claude-sonnet-4-20250514", maxTokens = 1024, system } = {}) {
-  const body = {
-    model,
-    max_tokens: maxTokens,
-    stream: true,
-    messages: messages.map((m) => ({
-      role: m.role,
-      content: m.content,
-    })),
-  };
-
-  if (system) {
-    body.system = system;
-  }
-
+export async function streamMessage(messages, onChunk, { model = DEFAULT_MODEL, maxTokens = 1024, system } = {}) {
   const response = await fetch(API_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true",
-    },
-    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages, system, model, maxTokens, stream: true }),
   });
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
-    throw new Error(error.error?.message || `API error: ${response.status}`);
+    throw new Error(error.error || `Request failed: ${response.status}`);
   }
 
   const reader = response.body.getReader();
   const decoder = new TextDecoder();
   let fullText = "";
+  let buffer = "";
 
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
 
-    const chunk = decoder.decode(value, { stream: true });
-    const lines = chunk.split("\n");
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop(); // keep any partial trailing line for the next chunk
 
     for (const line of lines) {
-      if (line.startsWith("data: ")) {
-        const data = line.slice(6);
-        if (data === "[DONE]") continue;
-        try {
-          const parsed = JSON.parse(data);
-          if (parsed.type === "content_block_delta" && parsed.delta?.text) {
-            fullText += parsed.delta.text;
-            onChunk(parsed.delta.text, fullText);
-          }
-        } catch {
-          // skip unparseable chunks
-        }
+      const trimmed = line.trim();
+      if (!trimmed.startsWith("data:")) continue;
+      const data = trimmed.slice(5).trim();
+      if (!data) continue;
+
+      let parsed;
+      try {
+        parsed = JSON.parse(data);
+      } catch {
+        continue; // skip unparseable frames
+      }
+
+      if (parsed.error) throw new Error(parsed.error);
+      if (parsed.text) {
+        fullText += parsed.text;
+        onChunk(parsed.text, fullText);
       }
     }
   }

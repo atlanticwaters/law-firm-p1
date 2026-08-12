@@ -26,4 +26,12 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+  {
+    // Server-side / build files run in Node, not the browser.
+    files: ['api/**/*.js', 'vite.config.js', 'eslint.config.js'],
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+    },
+  },
 ])
