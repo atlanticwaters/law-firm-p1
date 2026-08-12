@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../hooks/useFadeIn";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import Seo from "../components/Seo";
 
 export default function Home() {
-  useDocumentTitle(null); // uses default site title
-
   const philRef = useFadeIn();
   const breakRef1 = useFadeIn();
   const practiceRef = useFadeIn();
@@ -17,6 +15,10 @@ export default function Home() {
 
   return (
     <div className="page page-home">
+      <Seo
+        description="Premier litigation counsel for entities who cannot independently retain or instruct legal representation. New York, London, Geneva."
+        canonicalPath="/"
+      />
       {/* ——— §1 Hero ——— */}
       <section className="hero">
         <div className="hero-bg">
