@@ -28,12 +28,24 @@ export default function ResultDetail() {
     );
   }
 
+  const canonicalUrl = `https://glovermastpurl.com/results/${slug}`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://glovermastpurl.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Representative Matters', item: 'https://glovermastpurl.com/results' },
+      { '@type': 'ListItem', position: 3, name: matter.title, item: canonicalUrl },
+    ],
+  };
+
   return (
     <div className="page page-case-detail">
       <Seo
         title={matter.title}
         description={matter.shortDescription || 'A representative matter handled by Glover, Mast & Purl.'}
         canonicalPath={`/results/${slug}`}
+        jsonLd={jsonLd}
       />
       <section className="case-detail-hero">
         {matter.heroImage && (

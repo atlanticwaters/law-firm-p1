@@ -65,6 +65,23 @@ const practices = [
   },
 ];
 
+const practiceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Legal Services — Glover, Mast & Purl LLP',
+  provider: { '@type': 'LegalService', name: 'Glover, Mast & Purl LLP', url: 'https://glovermastpurl.com' },
+  serviceType: 'Litigation',
+  url: 'https://glovermastpurl.com/practice',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Practice Areas',
+    itemListElement: practices.map((p) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: p.title },
+    })),
+  },
+};
+
 export default function Practice() {
   return (
     <div className="page page-practice">
@@ -72,6 +89,7 @@ export default function Practice() {
         title="Practice Areas"
         description="Puppet defense, handler misconduct, attributed speech claims, wrongful termination, intellectual property, and entity standing — the firm's core litigation practice."
         canonicalPath="/practice"
+        jsonLd={practiceJsonLd}
       />
       <section className="page-hero">
         <div className="page-hero-bg">

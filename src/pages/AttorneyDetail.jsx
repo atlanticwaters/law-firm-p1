@@ -37,12 +37,36 @@ export default function AttorneyDetail() {
   const prevSlug = currentIndex > 0 ? slugOrder[currentIndex - 1] : null;
   const nextSlug = currentIndex < slugOrder.length - 1 ? slugOrder[currentIndex + 1] : null;
 
+  const canonicalUrl = `https://glovermastpurl.com/attorneys/${slug}`;
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: attorney.name,
+      jobTitle: attorney.role,
+      worksFor: { '@type': 'LegalService', name: 'Glover, Mast & Purl LLP' },
+      url: canonicalUrl,
+      ...(attorney.email ? { email: attorney.email } : {}),
+      ...(attorney.phone ? { telephone: attorney.phone } : {}),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://glovermastpurl.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Attorneys', item: 'https://glovermastpurl.com/attorneys' },
+        { '@type': 'ListItem', position: 3, name: attorney.name, item: canonicalUrl },
+      ],
+    },
+  ];
+
   return (
     <div className="page page-attorney-detail">
       <Seo
         title={attorney.name}
         description={`${attorney.name}, ${attorney.role} at Glover, Mast & Purl — representing entities in complex litigation.`}
         canonicalPath={`/attorneys/${slug}`}
+        jsonLd={jsonLd}
       />
       <section className="page-hero">
         <div className="page-hero-content">

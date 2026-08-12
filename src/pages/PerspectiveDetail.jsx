@@ -28,6 +28,28 @@ export default function PerspectiveDetail() {
     );
   }
 
+  const canonicalUrl = `https://glovermastpurl.com/perspectives/${slug}`;
+  // Only include datePublished if the date is a year or "Month YYYY" form (ISO-parseable and not a season display string)
+  const isIsoishDate = article.date && /^\d{4}$|^[A-Z][a-z]+ \d{4}$/.test(article.date) && !/^(Spring|Summer|Fall|Autumn|Winter)/.test(article.date);
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    author: { '@type': 'Person', name: article.author },
+    publisher: { '@type': 'Organization', name: 'Glover, Mast & Purl LLP' },
+    url: canonicalUrl,
+    ...(isIsoishDate ? { datePublished: article.date } : {}),
+  };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://glovermastpurl.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Perspectives', item: 'https://glovermastpurl.com/perspectives' },
+      { '@type': 'ListItem', position: 3, name: article.title, item: canonicalUrl },
+    ],
+  };
+
   return (
     <div className="page page-article-detail">
       <Seo
@@ -35,6 +57,7 @@ export default function PerspectiveDetail() {
         description={article.abstract || article.title}
         canonicalPath={`/perspectives/${slug}`}
         type="article"
+        jsonLd={[articleJsonLd, breadcrumbJsonLd]}
       />
       <section className="article-detail-hero">
         {article.heroImage && (

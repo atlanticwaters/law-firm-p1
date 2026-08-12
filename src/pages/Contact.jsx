@@ -24,12 +24,31 @@ export default function Contact() {
     await submit({ type: "contact", ...form });
   };
 
+  const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact — Glover, Mast & Purl LLP',
+    url: 'https://glovermastpurl.com/contact',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Glover, Mast & Purl LLP',
+      url: 'https://glovermastpurl.com',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'inquiries',
+        email: 'inquiries@glovermastpurl.com',
+        telephone: '+1-888-467-5529',
+      },
+    },
+  };
+
   return (
     <div className="page page-contact">
       <Seo
         title="Submit an Inquiry"
         description="Contact Glover, Mast & Purl. All matters begin with a written inquiry; a member of the firm responds within three business days."
         canonicalPath="/contact"
+        jsonLd={contactJsonLd}
       />
       <section className="page-hero">
         <div className="page-hero-bg">
