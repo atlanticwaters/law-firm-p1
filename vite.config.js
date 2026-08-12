@@ -19,6 +19,9 @@ function apiDevServer(env) {
       if (!process.env.INQUIRY_TO_EMAIL && env.INQUIRY_TO_EMAIL) {
         process.env.INQUIRY_TO_EMAIL = env.INQUIRY_TO_EMAIL
       }
+      if (!process.env.INQUIRY_FROM_EMAIL && env.INQUIRY_FROM_EMAIL) {
+        process.env.INQUIRY_FROM_EMAIL = env.INQUIRY_FROM_EMAIL
+      }
       // Register directly (not via a returned function) so this runs before
       // Vite's SPA history fallback and /api/* isn't rewritten to index.html.
       server.middlewares.use('/api', async (req, res, next) => {
