@@ -107,6 +107,10 @@ try {
       await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
       // Wait until React has rendered something into #root
       await page.waitForSelector('#root > *', { timeout: 15000 });
+      // Force all fade-in elements visible so captured HTML is not hidden for crawlers/no-JS
+      await page.evaluate(() => {
+        document.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
+      });
       const html = await page.content();
 
       // Write to dist

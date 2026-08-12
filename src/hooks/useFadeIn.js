@@ -7,6 +7,11 @@ export function useFadeIn() {
     const el = ref.current;
     if (!el) return;
 
+    if (typeof IntersectionObserver === 'undefined') {
+      el.classList.add('visible');
+      return;
+    }
+
     const prefersReduced =
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
