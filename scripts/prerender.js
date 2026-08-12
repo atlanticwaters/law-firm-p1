@@ -22,9 +22,10 @@ const DIST = path.join(ROOT, 'dist');
 // Route enumeration
 // ---------------------------------------------------------------------------
 
-// Static routes
+// Static routes — '/' is placed LAST so dist/index.html (the SPA fallback)
+// stays as the pristine vite build template while all other routes are captured.
+// Writing '/' last prevents Home's baked <head> from leaking into non-root routes.
 const STATIC_ROUTES = [
-  '/',
   '/attorneys',
   '/practice',
   '/results',
@@ -35,6 +36,7 @@ const STATIC_ROUTES = [
   '/careers',
   '/contact',
   '/privacy',
+  '/',
 ];
 
 // Dynamic routes from data slugs
@@ -48,7 +50,12 @@ const DYNAMIC_ROUTES = [
   ...perspectiveSlugs.map((s) => `/perspectives/${s}`),
 ];
 
-const ALL_ROUTES = [...STATIC_ROUTES, ...DYNAMIC_ROUTES];
+// '/' must be processed LAST (after all static and dynamic routes) so that
+// dist/index.html remains the pristine vite build template (SPA fallback)
+// while every other route is captured — preventing Home's baked <head> from
+// being served as the fallback and duplicating tags in non-root routes.
+const NON_ROOT_STATIC = STATIC_ROUTES.filter((r) => r !== '/');
+const ALL_ROUTES = [...NON_ROOT_STATIC, ...DYNAMIC_ROUTES, '/'];
 
 console.log(`Prerender: ${ALL_ROUTES.length} routes to process.`);
 
