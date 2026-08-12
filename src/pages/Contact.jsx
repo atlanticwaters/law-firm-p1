@@ -1,26 +1,28 @@
 import { useState } from "react";
 import { useFadeIn } from "../hooks/useFadeIn";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { useFormSubmit } from "../hooks/useFormSubmit";
 
 export default function Contact() {
   useDocumentTitle("Submit an Inquiry");
   const formRef = useFadeIn();
-  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     nature: "",
     message: "",
+    company: "",
   });
+  const { status, error, submit } = useFormSubmit("/api/inquiry");
+  const submitted = status === "success";
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In production, POST to Formspree or backend endpoint
-    setSubmitted(true);
+    await submit({ type: "contact", ...form });
   };
 
   return (
@@ -128,9 +130,20 @@ export default function Contact() {
                   placeholder="If you are not the client, please indicate who is operating on the client's behalf."
                 />
               </div>
-              <button type="submit" className="form-submit">
-                Submit Inquiry
+              <input
+                type="text"
+                name="company"
+                value={form.company}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px" }}
+              />
+              <button type="submit" className="form-submit" disabled={status === "submitting"}>
+                {status === "submitting" ? "Submitting" : "Submit Inquiry"}
               </button>
+              {status === "error" && <p className="form-error">{error}</p>}
             </form>
           )}
         </div>
